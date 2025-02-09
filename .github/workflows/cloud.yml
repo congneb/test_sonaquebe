@@ -2,7 +2,7 @@ name: SonarQube
 on:
   push:
     paths:
-      - ./github/workflows/cloud.yml
+      - .github/workflows/cloud.yml
   
 jobs:
   build:
