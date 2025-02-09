@@ -5,6 +5,8 @@ on:
     paths:
       - .github/workflows/cloud.yml
 
+  workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest
