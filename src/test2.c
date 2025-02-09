@@ -1,9 +1,9 @@
-#include "lib.h"
-
-int ff(int x) {
-  return 2 / x;
-}
+#include <stdio.h>
+#include "utils.h"
 
 int main() {
-  return myfun(1, ff) != ff(10);
+    int a = 10, b = 20;
+    int sum = add(a, b);
+    printf("Sum: %d\n", sum);
+    return 0;
 }

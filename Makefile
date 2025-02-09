@@ -9,10 +9,10 @@ CFLAGS = -Wall -g
 # Target executable name
 TARGET = main
 
-HEADERS = ./src/lib.h
+HEADERS = ./src/utils.h
 
 # Source files
-SRCS = src/lib.c src/test2.c
+SRCS = src/utils.c src/test2.c
 
 # Object files
 OBJS = $(SRCS:.c=.o)
