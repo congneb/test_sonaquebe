@@ -1,6 +1,8 @@
 name: SonarQube
 on:
-  workflow_dispatch
+  push:
+    paths:
+      - ./github/workflows/cloud.yml
   
 jobs:
   build:
@@ -25,5 +27,4 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            --define sonar.cfamily.compile-commands="${{ env.BUILD_WRAPPER_OUT_DIR }}/compile_commands.json" \
-            --define sonar.branch.name=${{ github.ref_name }}
+            --define sonar.cfamily.compile-commands="${{ env.BUILD_WRAPPER_OUT_DIR }}/compile_commands.json" --define sonar.branch.name=${{ github.ref_name }}
