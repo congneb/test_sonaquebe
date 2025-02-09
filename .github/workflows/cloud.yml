@@ -36,14 +36,11 @@ jobs:
         run: |
           build-wrapper-linux-x86-64 --out-dir bldwrapper-output make clean all
 
-      - name: Run SonarQube Scanner
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v4
         env:
-          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: |
-          sonar-scanner \
-            -Dsonar.projectKey=congneb_test_sonaquebe \
-            -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
-            -Dsonar.cfamily.build-wrapper-output=bldwrapper-output \
-            -Dsonar.branch.name=${{ github.ref_name }}
+        with:
+          args: >
+            --define sonar.cfamily.compile-commands="bldwrapper-output/compile_commands.json" -Dsonar.branch.name=${{ github.ref_name }}
+
