@@ -29,15 +29,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-sonar-cache
 
-      - name: Build project
-        run: |
-          make clean
-          make
+      - name: Install Build Wrapper
+        uses: SonarSource/sonarqube-scan-action/install-build-wrapper@v4
 
       - name: Prepare Build Wrapper
         run: |
-          build-wrapper-linux-x86-64 --out-dir bldwrapper-output make clean
-          build-wrapper-linux-x86-64 --out-dir bldwrapper-output make
+          build-wrapper-linux-x86-64 --out-dir bldwrapper-output make clean all
 
       - name: Run SonarQube Scanner
         env:
@@ -45,8 +42,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           sonar-scanner \
-            -Dsonar.projectKey=my:cpp_project \
-            -Dsonar.organization=my-github-org \
+            -Dsonar.projectKey=congneb_test_sonaquebe \
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
             -Dsonar.cfamily.build-wrapper-output=bldwrapper-output \
