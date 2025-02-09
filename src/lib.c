@@ -1,4 +1,5 @@
 #include "lib.h"
+
 int myfun(bool b, int (*callback)(int)) {
   int num = -1;
 
