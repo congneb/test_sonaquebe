@@ -26,4 +26,4 @@ jobs:
         with:
           args: >
             --define sonar.cfamily.compile-commands="${{ env.BUILD_WRAPPER_OUT_DIR }}/compile_commands.json" \
-            -Dsonar.branch.name=${{ github.ref_name }}
+            --define sonar.branch.name=${{ github.ref_name }}
