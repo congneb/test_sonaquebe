@@ -5,5 +5,5 @@ int ff(int x) {
 }
 
 int main() {
-  return myfun(false, ff) != ff(10);
+  return myfun(1, ff) != ff(10);
 }

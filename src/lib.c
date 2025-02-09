@@ -1,6 +1,6 @@
 #include "lib.h"
 
-int myfun(bool b, int (*callback)(int)) {
+int myfun(int b, int (*callback)(int)) {
   int num = -1;
 
   if (b) {
